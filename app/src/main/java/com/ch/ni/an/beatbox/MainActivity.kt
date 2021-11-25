@@ -1,5 +1,6 @@
 package com.ch.ni.an.beatbox
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -33,8 +34,14 @@ class MainActivity : AppCompatActivity() {
            )
 
         binding.seekBAr.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener{
+            @SuppressLint("StringFormatMatches")
             override fun onProgressChanged(seekBar :SeekBar?, progress :Int, fromUser :Boolean) {
-                val progressFloat: Float = progress.toFloat() / 100
+                var progressFloat: Float = progress.toFloat() / 100
+                if(progressFloat == 0f){
+                    progressFloat = 0.01f
+                }
+
+                binding.speedTextView.text = resources.getString(R.string.speed, progressFloat)
                 viewModel.setSound(progressFloat)
                 Log.e("Tag", progressFloat.toString())
             }

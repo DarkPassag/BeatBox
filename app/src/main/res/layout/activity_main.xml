@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,25 +11,39 @@
     <androidx.recyclerview.widget.RecyclerView
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/seekBAr"/>
+        app:layout_constraintBottom_toTopOf="@id/speedTextView"/>
+
+        <TextView
+            android:id="@+id/speedTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view"
+            app:layout_constraintBottom_toTopOf="@id/seekBAr"/>
 
         <SeekBar
             android:id="@+id/seekBAr"
-            android:layout_width="match_parent"
-            android:layout_height="12dp"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
             android:layout_marginBottom="16dp"
-            android:indeterminate="false"
-            android:max="100"
+            android:indeterminateTint="#142BC1"
+            android:max="200"
+            android:progress="100"
             android:progressDrawable="@android:color/transparent"
+            android:textDirection="firstStrong"
             android:thumb="@drawable/ic_seekbar_dot"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/speedTextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

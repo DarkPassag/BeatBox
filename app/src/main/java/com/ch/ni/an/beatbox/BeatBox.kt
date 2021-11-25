@@ -34,11 +34,14 @@ class BeatBox(
      * add soundListener - setVolume every sounds
      * add Extensions newId - setMaxSizeList
      * add fun setVolumeSound - set Volume with seekBar
+     * some change setVolume = setRate
      */
 
     val sounds :List<Sound>
 
-    private var volume :Float = 0f
+    private var volume :Float = 1f
+
+    private var rate: Float = 1f
 
     private val currentStreamId = mutableListOf<Int>()
 
@@ -51,21 +54,21 @@ class BeatBox(
 
     val soundListener: soundListener = { someInt ->
         currentStreamId.forEach{
-            soundPool.setVolume(it, someInt, someInt)
+            soundPool.setRate(it, someInt)
         }
     }
 
     fun play(sound :Sound) {
         sound.soundId?.let {
-            val streamId = soundPool.play(it, volume, volume, 1, 0, 1f)
+            val streamId = soundPool.play(it, volume, volume, 1, 0, rate)
             currentStreamId.newId(streamId)
             }
         }
 
 
-    fun setVolumeSound(volume :Float) {
-        this.volume = volume
-        soundListener(volume)
+    fun setRate(rate :Float) {
+        this.rate = rate
+        soundListener(rate)
 
     }
 

@@ -2,6 +2,7 @@ package com.ch.ni.an.beatbox
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import androidx.lifecycle.LiveData
 
 class SoundViewModel(
     private val beatBox :BeatBox
@@ -12,9 +13,11 @@ class SoundViewModel(
         }
     }
 
-    fun setSound(volume: Float){
-            beatBox.setVolumeSound(volume)
+    fun setSound(volume :Float) {
+        beatBox.setRate(volume)
     }
+
+
 
     var sound :Sound? = null
         set(sound) {
