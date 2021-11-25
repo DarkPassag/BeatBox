@@ -3,9 +3,12 @@ package com.ch.ni.an.beatbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ch.ni.an.beatbox.databinding.ActivityMainBinding
@@ -18,13 +21,34 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState :Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
         beatBox = BeatBox(assets)
+        val viewModel: SoundViewModel = SoundViewModel(beatBox)
 
 
        val binding : ActivityMainBinding = DataBindingUtil
            .setContentView(
                this, R.layout.activity_main
            )
+
+        binding.seekBAr.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar :SeekBar?, progress :Int, fromUser :Boolean) {
+                val progressFloat: Float = progress.toFloat() / 100
+                viewModel.setSound(progressFloat)
+                Log.e("Tag", progressFloat.toString())
+            }
+
+            override fun onStartTrackingTouch(seekBar :SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar :SeekBar?) {
+
+            }
+
+        }
+        )
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(this@MainActivity, 3)

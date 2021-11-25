@@ -12,6 +12,10 @@ class SoundViewModel(
         }
     }
 
+    fun setSound(volume: Float){
+            beatBox.setVolumeSound(volume)
+    }
+
     var sound :Sound? = null
         set(sound) {
             field = sound
