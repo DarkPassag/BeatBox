@@ -19,6 +19,7 @@
     <style name="BeatBoxButton"
         parent="Base.Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_beat_box</item>
+        <item name="android:stateListAnimator">@null</item>
 
     </style>
 </resources>
