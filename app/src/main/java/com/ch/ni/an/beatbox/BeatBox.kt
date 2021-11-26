@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
+import androidx.lifecycle.ViewModel
 import java.io.IOException
 
 
@@ -27,7 +28,7 @@ typealias soundListener = (Float) -> Unit
 
 class BeatBox(
     private val assets: AssetManager
-) {
+) : ViewModel() {
 
     /**
      * HomeWork
@@ -35,6 +36,8 @@ class BeatBox(
      * add Extensions newId - setMaxSizeList
      * add fun setVolumeSound - set Volume with seekBar
      * some change setVolume = setRate
+     * add ViewModel
+     * Create viewModelFactory
      */
 
     val sounds :List<Sound>

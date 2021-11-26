@@ -22,9 +22,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState :Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val soundViewModelFactory = SoundViewModelFactory(assets)
+
+        val myModel: BeatBox = ViewModelProvider(
+            this, soundViewModelFactory
+        ).get(BeatBox::class.java)
+
+        beatBox = myModel
 
 
-        beatBox = BeatBox(assets)
         val viewModel: SoundViewModel = SoundViewModel(beatBox)
 
 
@@ -64,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        beatBox.release()
+//        beatBox.release()
         super.onDestroy()
     }
 
